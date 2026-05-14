@@ -15,19 +15,24 @@ import Settings from './Pages/Settings'
 const App = () => {
   return (
     <>
-      <NavBar />
-      <SideBar />
+      
+      <section className='app-flex'>
+        <SideBar />
 
-      <Routes>
-        <Route path='/' element={<DashBoard />} />
-        <Route path='/invoices' element={<Invoices />} />
-        <Route path='/receipts' element={<Receipts />} />
-        <Route path='/clients' element={<Clients />} />
-        <Route path='/payments' element={<Payments />} />
-        <Route path='/reports' element={<Reports />} />
-        <Route path='/history' element={<History />} />
-        <Route path='/settings' element={<Settings />} />
-      </Routes>
+        <div className='nav-body'>
+          <NavBar />
+          <Routes>
+            <Route path='/' element={<DashBoard />} />
+            <Route path='/invoices' element={<Invoices />} />
+            <Route path='/receipts' element={<Receipts />} />
+            <Route path='/clients' element={<Clients />} />
+            <Route path='/payments' element={<Payments />} />
+            <Route path='/reports' element={<Reports />} />
+            <Route path='/history' element={<History />} />
+            <Route path='/settings' element={<Settings />} />
+          </Routes>
+        </div>
+      </section>
     </>
   )
 }

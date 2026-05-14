@@ -31,8 +31,6 @@ const NavBar = () => {
                     </div>
 
                     <i class="fa-solid fa-bolt"></i>
-                    <i class="fa-solid fa-gear"></i>
-                    <i class="fa-regular fa-circle-question"></i>
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
 
                 </div>
