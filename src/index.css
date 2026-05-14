@@ -403,6 +403,7 @@
   justify-content: space-between;
   margin-bottom: 12px;
   font-size: 15px;
+  color: #111827;
 }
 
 .summary-total {
@@ -438,6 +439,37 @@
   text-align: center;
   font-size: 13px;
   color: #6b7280;
+}
+
+.receipt-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 4px;
+  border: 1px solid #111827;
+}
+
+.receipt-grid input{
+  padding: 10px;
+}
+
+.receipt-grid input:focus{
+   border-color: #2f73ea;
+   box-shadow:
+    0 0 0 3px #2f73ea;
+}
+
+.create-btn{
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(180deg, #4f98ff 0%, #2f73ea 100%);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.13s ease;
+}
+
+.create-btn:active{
+  opacity: 0.4;
 }
 
 @media print {

@@ -59,7 +59,7 @@ const ReceiptComponent = () => {
 
             <div className="info-row">
               <span className="info-label">Date</span>
-              <span className="info-value">14 May 2026</span>
+              <span className="info-value">{new Date().toLocaleDateString()}</span>
             </div>
 
             <div className="info-row">
@@ -144,7 +144,7 @@ const ReceiptComponent = () => {
 
           {/* BOTTOM */}
           <div className="receipt-footer">
-            © 2026 Your Company — All Rights Reserved
+            © 2026 FinTrack Pro — All Rights Reserved
           </div>
 
         </div>

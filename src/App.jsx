@@ -11,6 +11,7 @@ import Payments from './Pages/Payments'
 import Reports from './Pages/Reports'
 import History from './Pages/History'
 import Settings from './Pages/Settings'
+import ReceiptComponent from './Components/ReceiptComponent'
 
 const App = () => {
   return (
@@ -33,6 +34,7 @@ const App = () => {
           </Routes>
         </div>
       </section>
+      <ReceiptComponent />
     </>
   )
 }
