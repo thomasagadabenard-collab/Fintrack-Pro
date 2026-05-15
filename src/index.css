@@ -621,6 +621,49 @@ tbody{
   color: #333;
 }
 
+.plus-image-container{
+  width: 100%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
+
+.plus-image{
+  background: #d1d5db;
+  padding: 10px;
+  width: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.plus-image:active{
+  opacity: 0.4;
+}
+
+.tab-input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+  padding: 6px 4px;
+  background: transparent;
+  transition: border-color 0.2s ease;
+  caret-color: #fff;
+  width: 100%;
+}
+
+.tab-input::placeholder{
+  
+  padding: 10px;
+}
+
+.tab-input:focus {
+  border-bottom: 2px solid #4f98ff;
+}
+
+.tab-index{
+  color: white;
+}
 @media (max-width: 1200px) {
   .invoice-container {
     width: 100%;
