@@ -441,22 +441,7 @@
   color: #6b7280;
 }
 
-.receipt-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 4px;
-  border: 1px solid #111827;
-}
 
-.receipt-grid input{
-  padding: 10px;
-}
-
-.receipt-grid input:focus{
-   border-color: #2f73ea;
-   box-shadow:
-    0 0 0 3px #2f73ea;
-}
 
 .create-btn{
   padding: 12px 20px;
@@ -466,6 +451,8 @@
   color: #fff;
   cursor: pointer;
   transition: all 0.13s ease;
+  margin: 10px auto 40px auto;
+  width: 100%;
 }
 
 .create-btn:active{
@@ -630,7 +617,7 @@ tbody{
 }
 
 .plus-image{
-  background: #d1d5db;
+  background: white;
   padding: 10px;
   width: 40px;
   border-radius: 50%;
@@ -650,6 +637,7 @@ tbody{
   transition: border-color 0.2s ease;
   caret-color: #fff;
   width: 100%;
+  color: white;
 }
 
 .tab-input::placeholder{
@@ -664,6 +652,40 @@ tbody{
 .tab-index{
   color: white;
 }
+
+.remove-img{
+  background: #d1d5db;
+  width: 30px;
+  padding: 4px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  color: white;
+}
+
+.history-table th,
+.history-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.history-class{
+  color: white;
+}
+
+.download-icon {
+  width: 24px;
+  background: white;
+  padding: 5px;
+  border-radius: 50%;
+}
+
 @media (max-width: 1200px) {
   .invoice-container {
     width: 100%;

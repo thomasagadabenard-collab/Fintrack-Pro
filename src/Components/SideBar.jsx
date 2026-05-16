@@ -7,7 +7,7 @@ const SideBar = () => {
          <aside className="sidebar" id="sidebar">
 
             <div className="logo">
-                <div class="logo-icon">
+                <div className="logo-icon">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -21,14 +21,14 @@ const SideBar = () => {
 
             <nav className="nav-links">
 
-                <Link to="/" className="nav-item active" title='Dashboard'> <i class="fa-solid fa-table-cells-large"></i> Dashboard</Link>
-                <Link to="/invoices" className="nav-item" title='Invoices'> <i class="fa-regular fa-file-lines"></i> Invoices</Link>
-                <Link to="/receipts" className="nav-item" title='Receipts'> <i class="fa-regular fa-receipt"></i> Receipts</Link>
-                <Link to="/clients" className="nav-item" title='Clients'> <i class="fa-solid fa-users"></i> Clients</Link>
-                <Link to="/payments" className="nav-item" title='payments'> <i class="fa-regular fa-credit-card"></i> Payments</Link>
-                <Link to="/reports" className="nav-item" title='Reports'> <i class="fa-solid fa-chart-column"></i> Reports</Link>
-                <Link to="/history" className="nav-item" title='History'>  <i class="fa-solid fa-clock-rotate-left"></i> History</Link>
-                <Link to="/settings" className="nav-item" title='Settings'> <i class="fa-solid fa-gear"></i> Settings</Link>
+                <Link to="/" className="nav-item active" title='Dashboard'> <i className="fa-solid fa-table-cells-large"></i> Dashboard</Link>
+                <Link to="/invoices" className="nav-item" title='Invoices'> <i className="fa-regular fa-file-lines"></i> Invoices</Link>
+                <Link to="/receipts" className="nav-item" title='Receipts'> <i className="fa-regular fa-receipt"></i> Receipts</Link>
+                <Link to="/clients" className="nav-item" title='Clients'> <i className="fa-solid fa-users"></i> Clients</Link>
+                <Link to="/payments" className="nav-item" title='payments'> <i className="fa-regular fa-credit-card"></i> Payments</Link>
+                <Link to="/reports" className="nav-item" title='Reports'> <i className="fa-solid fa-chart-column"></i> Reports</Link>
+                <Link to="/history" className="nav-item" title='History'>  <i className="fa-solid fa-clock-rotate-left"></i> History</Link>
+                <Link to="/settings" className="nav-item" title='Settings'> <i className="fa-solid fa-gear"></i> Settings</Link>
 
             </nav>
 

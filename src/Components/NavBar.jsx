@@ -27,11 +27,11 @@ const NavBar = () => {
                 <div className="icon-group">
 
                     <div className="notification">
-                    <i class="fa-regular fa-bell"></i>
+                    <i className="fa-regular fa-bell"></i>
                     </div>
 
-                    <i class="fa-solid fa-bolt"></i>
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <i className="fa-solid fa-bolt"></i>
+                    <i className="fa-solid fa-arrow-right-from-bracket"></i>
 
                 </div>
 
