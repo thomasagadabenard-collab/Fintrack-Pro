@@ -34,7 +34,6 @@ const App = () => {
           </Routes>
         </div>
       </section>
-      <ReceiptComponent />
     </>
   )
 }

@@ -1,29 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
-const ReceiptComponent = () => {
-  const items = [
-    {
-      id: 1,
-      name: "Premium UI Kit",
-      qty: 2,
-      price: 25000,
-    },
-    {
-      id: 2,
-      name: "Website Development",
-      qty: 1,
-      price: 180000,
-    },
-    {
-      id: 3,
-      name: "Hosting & Domain",
-      qty: 1,
-      price: 35000,
-    },
-  ];
-
-  const subtotal = items.reduce(
-    (acc, item) => acc + item.qty * item.price,
+const ReceiptComponent = ({
+  customerName,
+  paymentMethod,
+  balance,
+  rows,
+  onClose
+}) => {
+   const [closeReceipt, setCloseReceipt] = useState(false)
+  
+  const subtotal = rows.reduce(
+    (acc, row) => acc + row.quantity * row.amount,
     0
   );
 
@@ -37,21 +24,22 @@ const ReceiptComponent = () => {
     }).format(amount);
   };
 
+  const handleCloseReceipt = () => {
+    setCloseReceipt(prev => !prev)
+  }
+
   return (
     <>
-    <div className="receipt-wrapper">
+    <div className="receipt-wrapper" onClick={onClose}>
         <div className="receipt-card">
 
-          {/* HEADER */}
           <div className="receipt-header">
             <h1>RECEIPT</h1>
             <p>Payment Successfully Completed</p>
           </div>
 
-          {/* BODY */}
           <div className="receipt-body">
 
-            {/* INFO */}
             <div className="info-row">
               <span className="info-label">Receipt No</span>
               <span className="info-value">RCPT-2026-001</span>
@@ -64,33 +52,32 @@ const ReceiptComponent = () => {
 
             <div className="info-row">
               <span className="info-label">Customer</span>
-              <span className="info-value">John Doe</span>
+              <span className="info-value">{customerName}</span>
             </div>
 
             <div className="info-row">
               <span className="info-label">Payment Method</span>
-              <span className="info-value">Bank Transfer</span>
+              <span className="info-value">{paymentMethod}</span>
             </div>
 
             <div className="divider"></div>
 
-            {/* ITEMS */}
             <h3 className="items-title">
               Purchased Items
             </h3>
 
-            {items.map((item) => (
-              <div className="item" key={item.id}>
+            {rows.map((row) => (
+              <div className="item" key={row.id}>
 
                 <div className="item-left">
-                  <h4>{item.name}</h4>
+                  <h4>{row.item}</h4>
                   <p>
-                    Qty: {item.qty}
+                    Qty: {row.quantity}
                   </p>
                 </div>
 
                 <div className="item-price">
-                  {formatCurrency(item.qty * item.price)}
+                  {formatCurrency(row.quantity * row.amount)}
                 </div>
 
               </div>
@@ -98,7 +85,6 @@ const ReceiptComponent = () => {
 
             <div className="divider"></div>
 
-            {/* SUMMARY */}
             <div className="summary">
 
               <div className="summary-row">
@@ -124,12 +110,10 @@ const ReceiptComponent = () => {
 
             </div>
 
-            {/* STATUS */}
             <div className="status">
               Payment Successful
             </div>
 
-            {/* FOOTER TEXT */}
             <div className="r-footer">
               <p>
                 Thank you for your purchase.
@@ -142,7 +126,6 @@ const ReceiptComponent = () => {
 
           </div>
 
-          {/* BOTTOM */}
           <div className="receipt-footer">
             © 2026 FinTrack Pro — All Rights Reserved
           </div>

@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import plus from '../assets/plus.svg.svg'
 import remove from '../assets/delete.svg'
 import downloadIcon from '../assets/arrow_down.svg'
+import ReceiptComponent from '../Components/ReceiptComponent'
 
 const Receipts = () => {
 
   const [history, setHistory] = useState([])
-
+  const [selectedReceipt, setSelectedReceipt] = useState(null)
   
   const [receiptDetails, setReceiptDetails] = useState({
     customerName: '',
@@ -23,6 +24,12 @@ const Receipts = () => {
       amount: ''
     }
   ])
+
+  
+
+  const handleRenderReceipt = (receipt) => {
+    setSelectedReceipt(receipt)
+  }
 
   const handleReceiptDetails = (e) => {
 
@@ -123,12 +130,9 @@ const Receipts = () => {
     ])
   }
 
-  const handleDownload = (receipt) => {
-    console.log("Downloading receipt:", receipt)
-  }
 
   return (
-    <>
+    <><section className='receipt-page-wrapper'>
       <h1>Receipts Page</h1>
 
       <div>
@@ -354,7 +358,7 @@ const Receipts = () => {
                       src={downloadIcon} 
                       alt="download"
                       className="download-icon"
-                      onClick={() => handleDownload(receipt)}
+                      onClick={() => handleRenderReceipt(receipt)}
                       style={{ cursor: "pointer" }}
                     />
                   </td>
@@ -364,7 +368,25 @@ const Receipts = () => {
             </tbody>
           </table>
         )}
-            </>
+
+            {
+              selectedReceipt && (
+                <ReceiptComponent
+                  customerName={
+                    selectedReceipt.details.customerName
+                  }
+                  paymentMethod={
+                    selectedReceipt.details.paymentMethod
+                  }
+                  balance={
+                    selectedReceipt.details.balance
+                  }
+                  rows={selectedReceipt.items}
+                   onClose={() => setSelectedReceipt(null)}
+                />
+              )
+            }
+           </section> </>
           )
         }
 
