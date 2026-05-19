@@ -732,3 +732,9 @@ tbody{
     font-size: 14px;
   }
 }
+
+/*Client*/
+.client-history-table td{
+  color: white;
+  margin-bottom: 20px;
+}

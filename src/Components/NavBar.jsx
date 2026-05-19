@@ -11,7 +11,7 @@ const NavBar = () => {
                     <i className="fa-solid fa-bars"></i>
                 </div>
 
-                <h1 className="welcome">Welcome back, Alex Ryder</h1>
+                <h1 className="welcome">Welcome back, Thomas Benard</h1>
 
             </div>
 
