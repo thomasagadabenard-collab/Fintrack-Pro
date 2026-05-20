@@ -738,3 +738,8 @@ tbody{
   color: white;
   margin-bottom: 20px;
 }
+
+/*Inoice*/
+.invoice-history-table td, table td{
+  color: white;
+}

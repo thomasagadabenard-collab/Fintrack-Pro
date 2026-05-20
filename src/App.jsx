@@ -12,6 +12,7 @@ import Reports from './Pages/Reports'
 import History from './Pages/History'
 import Settings from './Pages/Settings'
 import ReceiptComponent from './Components/ReceiptComponent'
+import InvoiceComponent from './Components/InvoiceComponent'
 
 const App = () => {
   return (
@@ -32,6 +33,8 @@ const App = () => {
             <Route path='/history' element={<History />} />
             <Route path='/settings' element={<Settings />} />
           </Routes>
+
+          {/*<InvoiceComponent />*/}
         </div>
       </section>
     </>
