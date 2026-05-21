@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import plus from '../assets/plus.svg.svg'
 import remove from '../assets/delete.svg'
 import downloadIcon from '../assets/arrow_down.svg'
@@ -6,7 +6,12 @@ import ReceiptComponent from '../Components/ReceiptComponent'
 
 const Receipts = () => {
 
-  const [history, setHistory] = useState([])
+  const [history, setHistory] = useState(() => {
+    const savedReceipts = localStorage.getItem("savingReceipt")
+
+    return savedReceipts ? JSON.parse(savedReceipts) : []
+  })
+
   const [selectedReceipt, setSelectedReceipt] = useState(null)
   
   const [receiptDetails, setReceiptDetails] = useState({
@@ -129,6 +134,10 @@ const Receipts = () => {
       { id: Date.now(), item: '', quantity: '', amount: '' }
     ])
   }
+
+  useEffect(() => {
+    localStorage.setItem("savingReceipt", JSON.stringify(history))
+  },[history])
 
 
   return (

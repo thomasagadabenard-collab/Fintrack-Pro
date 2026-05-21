@@ -11,7 +11,14 @@ const Clients = () => {
 
   const [errors, setErrors] = useState({});
 
-  const [history, setHistory] = useState([]);
+  const [history, setHistory] = useState(() => {
+    try {
+      const saved = localStorage.getItem("clientHistory")
+      return saved ? JSON.parse(saved) : []
+    } catch (e) {
+      return []
+    }
+  })
 
   const [good, setGood] = useState({
     name: "Name details looks good",
@@ -58,6 +65,14 @@ const Clients = () => {
     }
   };
 
+  const handleDeleteClient = (id) => {
+    const filteredClients = history.filter(
+      (client) => client.id !== id
+    )
+
+    setHistory(filteredClients)
+  }
+
   useEffect(() => {
     if (Object.keys(errors).length > 0) {
       const timer = setTimeout(() => {
@@ -67,6 +82,10 @@ const Clients = () => {
       return () => clearTimeout(timer);
     }
   }, [errors]);
+
+  useEffect(() => {
+    localStorage.setItem("clientHistory", JSON.stringify(history))
+  }, [history])
   
 
   return (
@@ -181,7 +200,7 @@ const Clients = () => {
     <section>
       <h2>Client Details</h2>
 
-      {history.length !== 0 ? (
+      {history && history.length > 0 ?  (
         <table className="client-history-table">
           <thead>
             <tr>
@@ -190,6 +209,7 @@ const Clients = () => {
               <th>Company</th>
               <th>Email</th>
               <th>Phone number</th>
+              <th></th>
             </tr>
           </thead>
 
@@ -201,6 +221,9 @@ const Clients = () => {
                 <td>{client.company}</td>
                 <td>{client.email}</td>
                 <td>{client.phone}</td>
+                <td>
+                  <button onClick={() => {handleDeleteClient(client.id)}} className="delete-btn">Delete</button>
+                </td>
               </tr>
             ))}
           </tbody>

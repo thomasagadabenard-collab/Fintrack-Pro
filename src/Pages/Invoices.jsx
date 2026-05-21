@@ -1,12 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import plus from '../assets/plus.svg.svg'
 
 const Invoices = () => {
 
-  // ✅ store invoices properly as ARRAY
-  const [history, setHistory] = useState([])
+ const [history, setHistory] = useState(() => {
+    try {
+      const saved = localStorage.getItem("saveHistory")
 
-  // ✅ store errors separately
+      if (!saved) return []
+
+      const parsed = JSON.parse(saved)
+
+      // 🧹 remove null or invalid entries
+      return Array.isArray(parsed)
+        ? parsed.filter(item => item && typeof item === "object")
+        : []
+    } catch {
+      return []
+    }
+  })
+
   const [errors, setErrors] = useState({})
 
   const [billTo, setBillTo] = useState({
@@ -25,84 +38,85 @@ const Invoices = () => {
 
   const [invoiceTable, setInvoiceTable] = useState([
     {
-      id: Date.now(),
+      id: Date.now() + Math.random(),
       item: '',
       quantity: '',
       price: ''
     }
   ])
 
-  // ROW HANDLING 
   const handleRowChange = (id, field, value) => {
-    const updatedRows = invoiceTable.map((row) =>
-      row.id === id ? { ...row, [field]: value } : row
+    setInvoiceTable(prev =>
+      prev.map(row =>
+        row.id === id ? { ...row, [field]: value } : row
+      )
     )
-
-    setInvoiceTable(updatedRows)
   }
 
- const handleAddRow = () => {
-
-  const lastRow = invoiceTable[invoiceTable.length - 1]
-
-  if (
-    !lastRow.item.trim() ||
-    !lastRow.quantity.trim() ||
-    !lastRow.price.trim()
-  ) return
-
-  const newRow = {
-    id: Date.now() + Math.random(),
-    item: '',
-    quantity: '',
-    price: ''
+  const handleAddRow = () => {
+    setInvoiceTable(prev => [
+      ...prev,
+      {
+        id: Date.now() + Math.random(),
+        item: '',
+        quantity: '',
+        price: ''
+      }
+    ])
   }
 
-  setInvoiceTable([...invoiceTable, newRow])
-}
+  const handleDeleteRow = (id) => {
+    setInvoiceTable(prev => {
+      if (prev.length === 1) return prev
+      return prev.filter(row => row.id !== id)
+    })
+  }
 
-  // VALIDATION
   const handleError = () => {
-
     const err = {}
 
-    if (!billTo.name) err.name = "Name cannot be empty"
-    if (!billTo.company) err.company = "Kindly enter company name"
-    if (!billTo.email) err.email = "Please enter email"
-    if (!billTo.number) err.number = "Please enter phone number"
+    if (!billTo.name.trim()) err.name = "Name cannot be empty"
+    if (!billTo.company.trim()) err.company = "Kindly enter company name"
+    if (!billTo.email.trim()) err.email = "Please enter email"
+    if (!billTo.number.trim()) err.number = "Please enter phone number"
 
-    if (!paymentDetails.bank) err.bank = "Bank required"
-    if (!paymentDetails.accountName) err.accountName = "Account name required"
-    if (!paymentDetails.accountNumber) err.accountNumber = "Account number required"
-    if (!paymentDetails.currency) err.currency = "Currency required"
+    if (!paymentDetails.bank.trim()) err.bank = "Bank required"
+    if (!paymentDetails.accountName.trim()) err.accountName = "Account name required"
+    if (!paymentDetails.accountNumber.trim()) err.accountNumber = "Account number required"
+    if (!paymentDetails.currency.trim()) err.currency = "Currency required"
 
     invoiceTable.forEach((row, index) => {
-      if (!row.item) err[`item-${index}`] = `Enter item for row ${index + 1}`
-      if (!row.quantity) err[`qty-${index}`] = `Enter quantity for row ${index + 1}`
-      if (!row.price) err[`price-${index}`] = `Enter price for row ${index + 1}`
+      if (!row.item.trim()) err[`item-${index}`] = `Enter item for row ${index + 1}`
+      if (!row.quantity.trim()) err[`qty-${index}`] = `Enter quantity for row ${index + 1}`
+      if (!row.price.trim()) err[`price-${index}`] = `Enter price for row ${index + 1}`
     })
 
     setErrors(err)
-
     return Object.keys(err).length === 0
   }
 
   const handleSubmit = () => {
-
-    const isValid = handleError()
-    if (!isValid) return
+    if (!handleError()) return
 
     const newInvoice = {
-      id: Date.now(),
+      id: Date.now() + Math.random(),
       ...billTo,
       ...paymentDetails,
       items: invoiceTable
     }
 
-    setHistory([...history, newInvoice])
+    setHistory(prev => [...prev, newInvoice])
 
     console.log("Saved:", newInvoice)
   }
+
+  const handleDeleteHistory = (id) => {
+    setHistory(prev => prev.filter(item => item.id !== id))
+  }
+
+  useEffect(() => {
+    localStorage.setItem("saveHistory", JSON.stringify(history))
+  }, [history])
 
   return (
     <div>
@@ -276,14 +290,12 @@ const Invoices = () => {
         </table>
 
         <div className='plus-image-container'>
-        
           <img
             src={plus}
             alt="plus icon"
             className='plus-image'
             onClick={handleAddRow}
           />
-        
         </div>
 
         <button className='create-btn' onClick={handleSubmit}>
@@ -310,6 +322,7 @@ const Invoices = () => {
                 <th>Account</th>
                 <th>Number</th>
                 <th>Currency</th>
+                <th></th>
               </tr>
             </thead>
 
@@ -325,6 +338,11 @@ const Invoices = () => {
                   <td>{inv.accountName}</td>
                   <td>{inv.accountNumber}</td>
                   <td>{inv.currency}</td>
+                  <td>
+                    <button onClick={() => handleDeleteHistory(inv.id)} className='delete-btn'>
+                      delete
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>

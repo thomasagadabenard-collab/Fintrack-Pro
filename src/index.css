@@ -20,6 +20,7 @@
       display: flex;
       flex-direction: column;
       margin-top: 100px;
+      margin-right: 20px;
       padding-left: 280px;
     }
 
@@ -742,4 +743,17 @@ tbody{
 /*Inoice*/
 .invoice-history-table td, table td{
   color: white;
+}
+
+.delete-btn{
+  padding: 8px 10px;
+  color: white;
+  background: #4f98ff;
+  border: none;
+  border-radius: 4px;
+}
+
+.delete-btn:hover{
+  opacity: 0.8;
+  transform: scale(0.8);
 }
