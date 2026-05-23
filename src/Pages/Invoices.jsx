@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import plus from '../assets/plus.svg.svg'
+import downloadicon from '../assets/arrow_down.svg'
+import InvoiceComponent from '../Components/InvoiceComponent'
 
 const Invoices = () => {
 
@@ -11,7 +13,6 @@ const Invoices = () => {
 
       const parsed = JSON.parse(saved)
 
-      // 🧹 remove null or invalid entries
       return Array.isArray(parsed)
         ? parsed.filter(item => item && typeof item === "object")
         : []
@@ -44,6 +45,12 @@ const Invoices = () => {
       price: ''
     }
   ])
+
+  const [selectedInvoice, setSelectedInvoice] = useState(null)
+
+  const handleRenderInvoice = (inv) => {
+    setSelectedInvoice(inv)
+  }
 
   const handleRowChange = (id, field, value) => {
     setInvoiceTable(prev =>
@@ -115,13 +122,13 @@ const Invoices = () => {
   }
 
   useEffect(() => {
-    localStorage.setItem("saveHistory", JSON.stringify(history))
+    localStorage.setItem("saveHistory", JSON.stringify(history)) 
   }, [history])
 
   return (
     <div>
 
-      <h1>Invoices page</h1>
+      <h1>Invoice page</h1>
 
       <section>
 
@@ -323,6 +330,7 @@ const Invoices = () => {
                 <th>Number</th>
                 <th>Currency</th>
                 <th></th>
+                <th></th>
               </tr>
             </thead>
 
@@ -339,6 +347,9 @@ const Invoices = () => {
                   <td>{inv.accountNumber}</td>
                   <td>{inv.currency}</td>
                   <td>
+                    <img src={downloadicon} alt="download icon" className='download-icon' onClick={() => handleRenderInvoice(inv)}/>
+                  </td>
+                  <td>
                     <button onClick={() => handleDeleteHistory(inv.id)} className='delete-btn'>
                       delete
                     </button>
@@ -351,8 +362,33 @@ const Invoices = () => {
 
       </section>
 
+      <section>
+        {selectedInvoice && (
+          <InvoiceComponent
+            name={selectedInvoice.name}
+            company={selectedInvoice.company}
+            email={selectedInvoice.email}
+            number={selectedInvoice.number}
+            bank={selectedInvoice.bank}
+            accountName={selectedInvoice.accountName}
+            accountNumber={selectedInvoice.accountNumber}
+            currency={selectedInvoice.currency}
+            items={selectedInvoice.items}
+          />
+        )}
+      </section>
+
     </div>
   )
 }
 
 export default Invoices
+
+  const [invoiceTable, setInvoiceTable] = useState([
+    {
+      id: Date.now() + Math.random(),
+      item: '',
+      quantity: '',
+      price: ''
+    }
+  ])

@@ -1,31 +1,13 @@
 import React from "react";
+import { data } from "react-router-dom";
 
-const InvoiceComponent = () => {
-  const items = [
-    {
-      id: 1,
-      description: "UI/UX Design",
-      quantity: 2,
-      unitPrice: 50000,
-    },
-    {
-      id: 2,
-      description: "Frontend Development",
-      quantity: 1,
-      unitPrice: 150000,
-    },
-    {
-      id: 3,
-      description: "Hosting Setup",
-      quantity: 1,
-      unitPrice: 30000,
-    },
-  ];
+const InvoiceComponent = ({ name, company, email, number, bank, accountName, accountNumber, currency, dueDate, items }) => {
 
-  const subtotal = items.reduce(
-    (acc, item) => acc + item.quantity * item.unitPrice,
-    0
-  );
+  const subtotal = (items || []).reduce((acc, item) => {
+    return acc +
+      (Number(item.quantity) || 0) *
+      (Number(item.price) || 0);
+  }, 0);
 
   const tax = 0;
   const total = subtotal + tax;
@@ -37,9 +19,13 @@ const InvoiceComponent = () => {
     }).format(amount);
   };
 
+  const formatNumber = (value) => {
+    return new Intl.NumberFormat("en-NG").format(value);
+  };
+
   return (
     <>
-      
+      <section className="invoice-component">
       <div className="invoice-container">
 
         {/* HEADER */}
@@ -58,10 +44,10 @@ const InvoiceComponent = () => {
               <strong>Invoice No:</strong> INV-001
             </p>
             <p>
-              <strong>Date:</strong> 14 May 2026
+              <strong>Date:</strong> {new Date().toLocaleDateString()}
             </p>
             <p>
-              <strong>Due Date:</strong> 21 May 2026
+              <strong>Due Date:</strong> {dueDate}
             </p>
           </div>
         </div>
@@ -70,32 +56,32 @@ const InvoiceComponent = () => {
         <div className="billing-section">
           <div className="bill-box">
             <h3>Bill To</h3>
-            <p>Client Name</p>
-            <p>Client Company</p>
-            <p>client@email.com</p>
-            <p>+234 800 000 0000</p>
+            <p>{name}</p>
+            <p>{company}</p>
+            <p>{email}</p>
+            <p>{number}</p>
           </div>
 
           <div className="bill-box">
             <h3>Payment Details</h3>
             <p>
-              <strong>Bank:</strong> Example Bank
+              <strong>Bank:</strong> {bank}
             </p>
             <p>
-              <strong>Account Name:</strong> Your Company Ltd
+              <strong>Account Name:</strong> {accountName}
             </p>
             <p>
-              <strong>Account No:</strong> 0123456789
+              <strong>Account No:</strong> {accountNumber}
             </p>
             <p>
-              <strong>Currency:</strong> NGN
+              <strong>Currency:</strong> {currency}
             </p>
           </div>
         </div>
 
         {/* ITEMS TABLE */}
-        <table>
-          <thead>
+        <table className="items-table">
+          <thead> 
             <tr>
               <th>#</th>
               <th>Description</th>
@@ -105,20 +91,14 @@ const InvoiceComponent = () => {
             </tr>
           </thead>
 
-          <tbody>
-            {items.map((item) => (
-              <tr key={item.id}>
-                <td>{item.id}</td>
-
-                <td>{item.description}</td>
-
-                <td>{item.quantity}</td>
-
-                <td>{formatCurrency(item.unitPrice)}</td>
-
-                <td>
-                  {formatCurrency(item.quantity * item.unitPrice)}
-                </td>
+          <tbody >
+            {items?.map((item, index) => (
+              <tr key={item.id || index}>
+                <td>{index + 1}</td>
+                <td>{item.item}</td>
+                <td>{Number(item.quantity)}</td>
+                <td>{formatNumber(Number(item.price))}</td>
+                <td>{formatNumber(Number(item.quantity) * Number(item.price))}</td>
               </tr>
             ))}
           </tbody>
@@ -161,6 +141,7 @@ const InvoiceComponent = () => {
           </div>
         </div>
       </div>
+      </section>
     </>
   );
 };

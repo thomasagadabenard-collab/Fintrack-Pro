@@ -30,14 +30,11 @@ const Receipts = () => {
     }
   ])
 
-  
-
   const handleRenderReceipt = (receipt) => {
     setSelectedReceipt(receipt)
   }
 
   const handleReceiptDetails = (e) => {
-
     const { name, value } = e.target
 
     setReceiptDetails({
@@ -60,10 +57,8 @@ const Receipts = () => {
 
   const handleAddRow = () => {
 
-    // GET LAST ROW
     const lastRow = rows[rows.length - 1]
 
-    // VALIDATE INPUTS
     if (
       lastRow.item.trim() === '' ||
       lastRow.quantity === '' ||
@@ -142,7 +137,7 @@ const Receipts = () => {
 
   return (
     <><section className='receipt-page-wrapper'>
-      <h1>Receipts Page</h1>
+      <h1>Receipt Page</h1>
 
       <div>
 

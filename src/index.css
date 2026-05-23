@@ -577,6 +577,10 @@
 
 /*Invoice*/
 
+.invoice-component{
+  background: rgba(0,0,0,0.5);
+}
+
 .invoice-container {
   width: 1100px;
   min-height: 700px;
@@ -676,7 +680,7 @@ td {
   border-bottom: 1px solid #ddd;
 }
 
-tbody{
+.invoice-container td{
   color: #222;
 }
 
@@ -743,6 +747,10 @@ tbody{
 /*Inoice*/
 .invoice-history-table td, table td{
   color: white;
+}
+
+.items-table tbody{
+  color: black;
 }
 
 .delete-btn{
