@@ -384,11 +384,4 @@ const Invoices = () => {
 
 export default Invoices
 
-  const [invoiceTable, setInvoiceTable] = useState([
-    {
-      id: Date.now() + Math.random(),
-      item: '',
-      quantity: '',
-      price: ''
-    }
-  ])
+  

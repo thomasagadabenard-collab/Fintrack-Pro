@@ -13,23 +13,25 @@
 
     .app-flex{
       display: flex;
+      justify-content: space-between;
     }
 
     .nav-body{
-      width: 100%;
       display: flex;
       flex-direction: column;
       margin-top: 100px;
-      margin-right: 20px;
-      padding-left: 280px;
+      margin-left: 300px;
+      padding: 20px;
+      min-height: 100vh;
+      width: calc(100% - 300px);
     }
 
 
     /*SIDEBAR*/
 
     .sidebar {
-      width: 20%;
-      min-width: 250px;
+      width: 300px;
+      max-width: 40%;
       height: 100vh;      
       background: linear-gradient(180deg, #0d1c35 0%, #081325 100%);
       border-right: 1px solid rgba(255,255,255,0.08);
@@ -176,7 +178,7 @@
 
     .topbar {
       height: 86px;
-      width: 80%;
+      width: calc(100% - 300px);
       position: fixed;
       top: 0;
       right: 0;
@@ -263,30 +265,30 @@
 
     @media (max-width: 900px) {
 
-      .sidebar {
-        transform: translateX(-100%);
-      }
+  .sidebar{
+    transform: translateX(-100%);
+    margin-top: 0;
+  }
 
-      .sidebar.active {
-        transform: translateX(0);
-      }
+  .sidebar.active{
+    transform: translateX(0);
+  }
 
-      .menu-toggle {
-        display: block;
-      }
+  .topbar{
+    width: 100%;
+    left: 0;
+  }
 
-      .welcome {
-        font-size: 1.3rem;
-      }
+  .nav-body{
+    width: 100%;
+    margin-left: 0;
+    padding: 20px;
+  }
 
-      .icon-group {
-        gap: 14px;
-      }
-
-      .topbar{
-        width: 100%;
-      }
-    }
+  .menu-toggle{
+    display: block;
+  }
+}
 
     @media (max-width: 600px) {
 

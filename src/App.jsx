@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import SideBar from './Components/SideBar'
 import NavBar from './Components/NavBar'
 import { Route, Routes } from 'react-router-dom'
@@ -15,6 +15,9 @@ import ReceiptComponent from './Components/ReceiptComponent'
 import InvoiceComponent from './Components/InvoiceComponent'
 
 const App = () => {
+
+  
+
   return (
     <>
       
