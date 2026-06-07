@@ -1,9 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useState } from "react";
 
-const SideBar = () => {
+const SideBar = () => {    
+
   return (
     <>
+
          <aside className="sidebar" id="sidebar">
 
             <div className="logo">

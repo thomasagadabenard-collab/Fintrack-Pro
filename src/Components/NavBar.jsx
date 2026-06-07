@@ -1,19 +1,20 @@
 import React from 'react'
 
 const NavBar = () => {
+
   return (
     <>
         <header className="topbar">
 
             <div className="left-section">
 
-                <div className="menu-toggle" id="menuBtn">
+                <div className="menu-toggle" id="menuBtn" >
                     <i className="fa-solid fa-bars"></i>
                 </div>
 
                 <h1 className="welcome">Welcome back, Thomas Benard</h1>
 
-            </div>
+            </div> 
 
 
             <div className="top-actions">
@@ -38,8 +39,8 @@ const NavBar = () => {
             </div>
 
         </header>      
-    </>
-  )
+    </> )
 }
+
 
 export default NavBar

@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import SideBar from './Components/SideBar'
 import NavBar from './Components/NavBar'
 import { Route, Routes } from 'react-router-dom'
-
 import DashBoard from './Pages/DashBoard'
 import Invoices from './Pages/Invoices'
 import Receipts from './Pages/Receipts'
@@ -13,14 +12,16 @@ import History from './Pages/History'
 import Settings from './Pages/Settings'
 import ReceiptComponent from './Components/ReceiptComponent'
 import InvoiceComponent from './Components/InvoiceComponent'
+import LogIn from './Pages/LogIn'
+
 
 const App = () => {
 
-  
-
   return (
     <>
+
       
+
       <section className='app-flex'>
         <SideBar />
 
@@ -37,9 +38,10 @@ const App = () => {
             <Route path='/settings' element={<Settings />} />
           </Routes>
 
-          {/*<InvoiceComponent />*/}
         </div>
       </section>
+
+      <LogIn />
     </>
   )
 }

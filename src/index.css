@@ -265,30 +265,30 @@
 
     @media (max-width: 900px) {
 
-  .sidebar{
-    transform: translateX(-100%);
-    margin-top: 0;
-  }
+      .sidebar{
+          transform: translateX(-100%);
+          margin-top: 0;
+        }
 
-  .sidebar.active{
-    transform: translateX(0);
-  }
+        .sidebar.active{
+          transform: translateX(0);
+        }
 
-  .topbar{
-    width: 100%;
-    left: 0;
-  }
+        .topbar{
+          width: 100%;
+          left: 0;
+        }
 
-  .nav-body{
-    width: 100%;
-    margin-left: 0;
-    padding: 20px;
-  }
+        .nav-body{
+          width: 100%;
+          margin-left: 0;
+          padding: 20px;
+        }
 
-  .menu-toggle{
-    display: block;
-  }
-}
+        .menu-toggle{
+          display: block;
+        }
+      }
 
     @media (max-width: 600px) {
 
@@ -766,4 +766,128 @@ td {
 .delete-btn:hover{
   opacity: 0.8;
   transform: scale(0.8);
+}
+
+/*Log In*/
+
+.login-wrapper{
+    background: #081325;
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+}
+
+.login-form{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border: 1px gray solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 80px 20px;
+    background: #2f73ea;
+    color: white;
+    border-radius: 32px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.form-checkbox{
+    accent-color: rgb(40, 55, 87);
+    cursor: pointer;
+}
+
+.login-form input{
+    width: 100%;
+    padding: 12px;
+}
+
+.inp-small-btn{
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    
+}
+
+.inp-small{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+    width: 30%;
+    padding: 0 22px;
+}
+
+.form-btn{
+    padding: 12px 30px;
+    width: 70%;
+    cursor: pointer;
+    background: white;
+    color: black;
+    border: none;
+    font-size: 1.1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.form-btn:hover{
+    background: #2f73ea;
+    border: 1px solid gray;
+    color: white;
+}
+
+.form-btn:active{
+    opacity: 0.4;
+}
+
+.error{
+    color: red;
+}
+
+.navbar-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    width: 20%;
+    position: relative;
+    background: rgb(32, 54, 92);
+    padding: 0 20px;
+}
+
+.navbar-wrapper *{
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: black;
+    cursor: pointer;
+    padding: 8px 20px;
+    background: white;
+    color: rgb(32, 54, 92);
+    border-radius: 22px;
+    transition: all 0.2s ease-in-out;
+}
+
+.navbar-wrapper *:hover{
+    background: rgb(32, 54, 92);
+    border: 1px solid gray;
+    color: white;
+}
+
+.navbar-wrapper *:active{
+    opacity: 0.5;
+}
+
+.dashboard-wrapper{
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.logout-btn{
+    padding: 10px 20px;
+    background: white;
+    color: rgb(32, 54, 92);
+    position: absolute;
+    bottom: 30px; 
 }
