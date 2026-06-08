@@ -788,7 +788,7 @@ td {
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 80px 20px;
-    background: #2f73ea;
+    background: #081325;
     color: white;
     border-radius: 32px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
@@ -824,17 +824,19 @@ td {
     padding: 12px 30px;
     width: 70%;
     cursor: pointer;
-    background: white;
-    color: black;
+    background: #081325;
+    color: white;
     border: none;
     font-size: 1.1rem;
     transition: all 0.2s ease-in-out;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
 .form-btn:hover{
-    background: #2f73ea;
-    border: 1px solid gray;
-    color: white;
+    background: white;
+    border: 1px solid black;
+    color: black;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
 .form-btn:active{

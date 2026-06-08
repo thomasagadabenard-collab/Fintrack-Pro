@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
+
 import SideBar from './Components/SideBar'
 import NavBar from './Components/NavBar'
-import { Route, Routes } from 'react-router-dom'
+import ProtectedRoute from './Components/ProtectedRoute'
+
 import DashBoard from './Pages/DashBoard'
 import Invoices from './Pages/Invoices'
 import Receipts from './Pages/Receipts'
@@ -10,39 +13,120 @@ import Payments from './Pages/Payments'
 import Reports from './Pages/Reports'
 import History from './Pages/History'
 import Settings from './Pages/Settings'
-import ReceiptComponent from './Components/ReceiptComponent'
-import InvoiceComponent from './Components/InvoiceComponent'
 import LogIn from './Pages/LogIn'
-
 
 const App = () => {
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  // Layout for protected pages
+  const ProtectedLayout = ({ children }) => {
+    return (
+      <ProtectedRoute isLoggedIn={isLoggedIn}>
+        <section className='app-flex'>
+
+          <SideBar />
+
+          <div className='nav-body'>
+            <NavBar />
+            {children}
+          </div>
+
+        </section>
+      </ProtectedRoute>
+    )
+  }
+
   return (
-    <>
+    <Routes>
 
-      
+      {/* Login Page */}
+      <Route
+        path="/"
+        element={<LogIn setIsLoggedIn={setIsLoggedIn} />}
+      />
 
-      <section className='app-flex'>
-        <SideBar />
+      {/* Dashboard */}
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedLayout>
+            <DashBoard />
+          </ProtectedLayout>
+        }
+      />
 
-        <div className='nav-body'>
-          <NavBar />
-          <Routes>
-            <Route path='/' element={<DashBoard />} />
-            <Route path='/invoices' element={<Invoices />} />
-            <Route path='/receipts' element={<Receipts />} />
-            <Route path='/clients' element={<Clients />} />
-            <Route path='/payments' element={<Payments />} />
-            <Route path='/reports' element={<Reports />} />
-            <Route path='/history' element={<History />} />
-            <Route path='/settings' element={<Settings />} />
-          </Routes>
+      {/* Invoices */}
+      <Route
+        path="/invoices"
+        element={
+          <ProtectedLayout>
+            <Invoices />
+          </ProtectedLayout>
+        }
+      />
 
-        </div>
-      </section>
+      {/* Receipts */}
+      <Route
+        path="/receipts"
+        element={
+          <ProtectedLayout>
+            <Receipts />
+          </ProtectedLayout>
+        }
+      />
 
-      <LogIn />
-    </>
+      {/* Clients */}
+      <Route
+        path="/clients"
+        element={
+          <ProtectedLayout>
+            <Clients />
+          </ProtectedLayout>
+        }
+      />
+
+      {/* Payments */}
+      <Route
+        path="/payments"
+        element={
+          <ProtectedLayout>
+            <Payments />
+          </ProtectedLayout>
+        }
+      />
+
+      {/* Reports */}
+      <Route
+        path="/reports"
+        element={
+          <ProtectedLayout>
+            <Reports />
+          </ProtectedLayout>
+        }
+      />
+
+      {/* History */}
+      <Route
+        path="/history"
+        element={
+          <ProtectedLayout>
+            <History />
+          </ProtectedLayout>
+        }
+      />
+
+      {/* Settings */}
+      <Route
+        path="/settings"
+        element={
+          <ProtectedLayout>
+            <Settings />
+          </ProtectedLayout>
+        }
+      />
+
+    </Routes>
   )
 }
 
