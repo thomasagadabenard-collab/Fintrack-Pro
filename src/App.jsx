@@ -19,7 +19,6 @@ const App = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  // Layout for protected pages
   const ProtectedLayout = ({ children }) => {
     return (
       <ProtectedRoute isLoggedIn={isLoggedIn}>
@@ -28,7 +27,7 @@ const App = () => {
           <SideBar />
 
           <div className='nav-body'>
-            <NavBar />
+            <NavBar setIsLoggedIn={setIsLoggedIn}/>
             {children}
           </div>
 

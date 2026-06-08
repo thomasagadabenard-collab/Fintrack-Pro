@@ -1,6 +1,10 @@
 import React from 'react'
 
-const NavBar = () => {
+const NavBar = ({setIsLoggedIn}) => {
+
+    const handleLogOut = () => {
+        setIsLoggedIn(false)
+    }
 
   return (
     <>
@@ -32,7 +36,7 @@ const NavBar = () => {
                     </div>
 
                     <i className="fa-solid fa-bolt"></i>
-                    <i className="fa-solid fa-arrow-right-from-bracket"></i>
+                    <i className="fa-solid fa-arrow-right-from-bracket" title='Log Out' onClick={handleLogOut}></i>
 
                 </div>
 

@@ -191,6 +191,10 @@
       z-index: 200;
     }
 
+    .fa-solid, .fa-bell{
+      cursor: pointer;
+    }
+
     .left-section {
       display: flex;
       align-items: center;
