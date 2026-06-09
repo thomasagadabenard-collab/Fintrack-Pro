@@ -60,6 +60,8 @@ const LogIn = ({ setIsLoggedIn }) => {
 
       setErrors({});
 
+      localStorage.setItem("auth", "true")
+
       setIsLoggedIn(true)
 
       alert("Login successful")

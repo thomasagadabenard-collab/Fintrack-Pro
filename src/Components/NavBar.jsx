@@ -3,7 +3,9 @@ import React from 'react'
 const NavBar = ({setIsLoggedIn}) => {
 
     const handleLogOut = () => {
+        localStorage.removeItem("auth")
         setIsLoggedIn(false)
+        navigate('/')
     }
 
   return (

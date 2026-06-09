@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useState } from "react";
 
 const SideBar = () => {    
 
@@ -23,8 +22,8 @@ const SideBar = () => {
 
 
             <nav className="nav-links">
-
-                <Link to="/" className="nav-item active" title='Dashboard'> <i className="fa-solid fa-table-cells-large"></i> Dashboard</Link>
+            
+                <Link to="/dashboard" className="nav-item active" title='Dashboard'> <i className="fa-solid fa-table-cells-large"></i> Dashboard</Link>
                 <Link to="/invoices" className="nav-item" title='Invoices'> <i className="fa-regular fa-file-lines"></i> Invoices</Link>
                 <Link to="/receipts" className="nav-item" title='Receipts'> <i className="fa-regular fa-receipt"></i> Receipts</Link>
                 <Link to="/clients" className="nav-item" title='Clients'> <i className="fa-solid fa-users"></i> Clients</Link>

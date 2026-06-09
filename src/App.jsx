@@ -17,7 +17,11 @@ import LogIn from './Pages/LogIn'
 
 const App = () => {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    localStorage.getItem("auth") === "true"
+  )
+
+  localStorage.setItem("auth", "true")
 
   const ProtectedLayout = ({ children }) => {
     return (
